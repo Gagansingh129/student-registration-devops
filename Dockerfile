@@ -1,16 +1,17 @@
-# Stage 1: Runtime
-FROM openjdk:17-jdk-slim
+# Multi-stage or direct runtime image using official Temurin Alpine
+FROM eclipse-temurin:17-jre-alpine
+
 WORKDIR /app
 
-# Copy the built jar and index.html
+# Copy the built jar artifact and index.html
 COPY target/student-registration-app-1.0.0.jar app.jar
 COPY index.html index.html
 
-# Expose server port
+# Expose HTTP port
 EXPOSE 8080
 
 # Environment variables
 ENV PORT=8080
 
-# Run the application
+# Run the Student Registration Application
 ENTRYPOINT ["java", "-jar", "app.jar", "8080"]

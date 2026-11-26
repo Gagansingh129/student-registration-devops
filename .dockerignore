@@ -1,6 +1,5 @@
-target/
-*.class
+target/*
+!target/*.jar
 .git
 .idea
-.DS_Store
 *.log
